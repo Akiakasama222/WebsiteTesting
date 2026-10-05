@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="MVC Bookkeeping & Accounting Services — practical bookkeeping, BIR tax compliance, business registration, SEC compliance, payroll, and business support for Philippine businesses.">
+
+<title>MVC Bookkeeping & Accounting Services</title>
+
+<style>
+:root {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --surface-2: #eef4f8;
+  --text: #152235;
+  --muted: #64748b;
+  --brand: #0b5c66;
+  --brand-dark: #123d56;
+  --accent: #d9a441;
+  --border: #dbe4ec;
+  --shadow: 0 20px 50px rgba(16, 37, 54, .10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: rgba(247, 249, 252, .92);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    var(--brand),
+    var(--brand-dark)
+  );
+  font-weight: 900;
+  box-shadow: 0 8px 24px rgba(11,92,102,.22);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-cta,
+.primary {
+  border: 0;
+  cursor: pointer;
+  background: var(--brand);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 750;
+  box-shadow: 0 8px 18px rgba(11,92,102,.18);
+}
+
+.nav-cta:hover,
+.primary:hover {
+  transform: translateY(-1px);
+}
+
+.menu {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 9px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 92px 0 76px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.12fr .88fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--brand);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .74rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--accent);
+}
+
+h1 {
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  line-height: .99;
+  letter-spacing: -.055em;
+  margin: 16px 0 24px;
+  max-width: 760px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 650px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.secondary {
+  padding: 11px 17px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 10px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.hero-card {
+  background: linear-gradient(
+    160deg,
+    var(--surface),
+    var(--surface-2)
+  );
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(217,164,65,.18);
+  right: -45px;
+  top: -45px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.status {
+  font-size: .75rem;
+  padding: 6px 9px;
+  border-radius: 99px;
+  background: rgba(11,92,102,.13);
+  color: var(--brand);
+  font-weight: 800;
+}
+
+.metric {
+  font-size: 2.1rem;
+  font-weight: 850;
+  letter-spacing: -.04em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.check-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.check {
+  flex: 0 0 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: .75rem;
+  margin-top: 2px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  padding: 82px 0;
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  margin: 10px 0 12px;
+}
+
+.section-head p {
+  color: var(--muted);
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.service {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  transition: .2s ease;
+}
+
+.service:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--surface-2);
+  color: var(--brand);
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.service h3 {
+  margin: 0 0 8px;
+  font-size: 1.12rem;
+}
+
+.service p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.band {
+  background: var(--brand-dark);
+  color: white;
+  border-radius: 24px;
+  padding: 42px;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.band p {
+  color: rgba(255,255,255,.78);
+}
+
+.band .primary {
+  background: white;
+  color: var(--brand-dark);
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.step {
+  padding: 22px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 16px;
+}
+
+.number {
+  font-size: .76rem;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: .1em;
+}
+
+.step h3 {
+  margin: 9px 0 7px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 0;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq {
+  display: grid;
+  gap: 10px;
+  max-width: 850px;
+}
+
+details {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+details p {
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.contact-panel,
+form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 12px;
+}
+
+.contact-item strong {
+  display: block;
+}
+
+.contact-item span {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: .84rem;
+  font-weight: 750;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 11px 12px;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-note {
+  font-size: .8rem;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 17px;
+  border-radius: 11px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: .2s;
+  z-index: 50;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 72px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .hero-grid,
+  .contact,
+  .band {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .container {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .hero {
+    padding-top: 58px;
+  }
+
+  .services,
+  .steps,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .band {
+    padding: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+
+  <div class="container nav-inner">
+
+    <a href="#home" class="brand">
+
+      <span class="logo">
+        MVC
+      </span>
+
+      <span>
+        MVC Bookkeeping<br>
+        &amp; Accounting Services
+      </span>
+
+    </a>
+
+    <button
+      class="menu"
+      id="menuBtn"
+      aria-label="Open menu">
+      ☰
+    </button>
+
+    <div class="nav-links" id="navLinks">
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#process">
+        How It Works
+      </a>
+
+      <a href="#faq">
+        FAQ
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+    </div>
+
+    <a
+      class="nav-cta"
+      href="#contact">
+      Book a Consultation
+    </a>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+<!-- HERO -->
+
+<section
+  class="hero"
+  id="home">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <span class="eyebrow">
+        Bookkeeping • Accounting • Compliance
+      </span>
+
+      <h1>
+        Stay compliant.
+        Stay organized.
+        Focus on your business.
+      </h1>
+
+      <p>
+        MVC Bookkeeping &amp; Accounting Services helps
+        Philippine businesses keep their books, tax filings,
+        registrations, and compliance requirements on track—
+        so owners can spend more time running the business.
+      </p>
+
+      <div class="actions">
+
+        <a
+          class="primary"
+          href="#contact">
+          Request Assistance
+        </a>
+
+        <a
+          class="secondary"
+          href="#services">
+          Explore Services
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <div class="card-top">
+
+        <strong>
+          Compliance at a glance
+        </strong>
+
+        <span class="status">
+          Organized
+        </span>
+
+      </div>
+
+      <div class="metric">
+        One trusted partner
+      </div>
+
+      <div class="muted">
+        for recurring compliance, records,
+        and business support.
+      </div>
+
+      <ul class="check-list">
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Monthly, quarterly &amp; annual tax compliance
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            BIR registration, updates &amp; closure support
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            SEC / eAFS submission coordination
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Payroll and business records support
+          </span>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section
+  class="section"
+  id="services">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        What we do
+      </span>
+
+      <h2>
+        Practical compliance support
+        for growing businesses.
+      </h2>
+
+      <p>
+        From routine bookkeeping to government transactions,
+        our services are designed to make recurring requirements
+        easier to manage.
+      </p>
+
+    </div>
+
+
+    <div class="services">
+
+      <article class="service">
+
+        <div class="icon">
+          01
+        </div>
+
+        <h3>
+          Bookkeeping &amp; Accounting
+        </h3>
+
+        <p>
+          Organized recording and monitoring of business
+          transactions, supporting documents, and financial records.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          02
+        </div>
+
+        <h3>
+          BIR Tax Compliance
+        </h3>
+
+        <p>
+          Assistance with monthly, quarterly, and annual BIR
+          filing requirements, schedules, and supporting documents.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          03
+        </div>
+
+        <h3>
+          Business Registration
+        </h3>
+
+        <p>
+          Support for business registration, updates, transfers,
+          closure, and related government transactions.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          04
+        </div>
+
+        <h3>
+          SEC &amp; eAFS Compliance
+        </h3>
+
+        <p>
+          Coordination of annual financial statement, eAFS,
+          SEC submission, and related corporate compliance
+          requirements.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          05
+        </div>
+
+        <h3>
+          Payroll Support
+        </h3>
+
+        <p>
+          Payroll records and statutory contribution documentation
+          for SSS, PhilHealth, and Pag-IBIG requirements.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          06
+        </div>
+
+        <h3>
+          Business Compliance Support
+        </h3>
+
+        <p>
+          Practical assistance for permits, tax clearances,
+          open cases, certificates, letters, and other
+          compliance needs.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section
+  class="section"
+  style="padding-top:0;">
+
+  <div class="container">
+
+    <div class="band">
+
+      <div>
+
+        <span
+          class="eyebrow"
+          style="color:#fff">
+
+          Built for business owners
+
+        </span>
+
+        <h2
+          style="
+          margin:12px 0 8px;
+          font-size:2rem;
+          letter-spacing:-.03em;">
+
+          Don't let compliance become
+          a last-minute problem.
+
+        </h2>
+
+        <p>
+          Set up a clear process for documents,
+          deadlines, filings, and follow-ups.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <a
+          class="primary"
+          href="#contact">
+
+          Talk to MVC
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section
+  class="section"
+  id="process">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        How it works
+      </span>
+
+      <h2>
+        A straightforward process.
+      </h2>
+
+      <p>
+        Clear requirements, organized documents,
+        and timely follow-through.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <article class="step">
+
+        <div class="number">
+          STEP 01
+        </div>
+
+        <h3>
+          Tell us what you need
+        </h3>
+
+        <p>
+          Share your business details and the
+          compliance or accounting requirement
+          you need help with.
+        </p>
+
+      </article>
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 02
+        </div>
+
+        <h3>
+          Submit documents
+        </h3>
+
+        <p>
+          We identify the required documents
+          and guide you on what to provide
+          and when.
+        </p>
+
+      </article>
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 03
+        </div>
+
+        <h3>
+          Process &amp; monitor
+        </h3>
+
+        <p>
+          We coordinate applicable filings,
+          submissions, follow-ups, and
+          compliance tracking.
+        </p>
+
+      </article>
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 04
+        </div>
+
+        <h3>
+          Keep your records
+        </h3>
+
+        <p>
+          Receive confirmations and maintain
+          an organized trail for your
+          business records.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section
+  class="section"
+  id="faq"
+  style="padding-top:20px;">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Frequently asked
+      </span>
+
+      <h2>
+        Questions before getting started.
+      </h2>
+
+    </div>
+
+
+    <div class="faq">
+
+      <details>
+
+        <summary>
+          Can MVC assist with recurring BIR compliance?
+        </summary>
+
+        <p>
+          Yes. MVC can help organize recurring monthly,
+          quarterly, and annual requirements and coordinate
+          the submission process based on your business
+          registration and applicable tax obligations.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          Can you help with business registration or updates?
+        </summary>
+
+        <p>
+          Yes. Assistance can cover registration-related
+          requirements and selected updates or government
+          transactions. Specific requirements depend on
+          the taxpayer and transaction.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          What documents should I prepare?
+        </summary>
+
+        <p>
+          Requirements vary by service. Common items may
+          include sales, purchases and expenses records,
+          payroll reports, registration documents, prior
+          filings, and other supporting documents.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          How do I request a quotation?
+        </summary>
+
+        <p>
+          Use the inquiry form below and describe the
+          service you need. MVC can then review the request
+          and advise on the appropriate next steps.
+        </p>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section
+  class="section"
+  id="contact">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Let's work together
+      </span>
+
+      <h2>
+        Tell us what you need help with.
+      </h2>
+
+      <p>
+        Send an inquiry and we'll have the right
+        information to start the conversation.
+      </p>
+
+    </div>
+
+
+    <div class="contact">
+
+
+      <div class="contact-panel">
+
+        <h3>
+          MVC Bookkeeping &amp; Accounting Services
+        </h3>
+
+        <p class="muted">
+          Professional bookkeeping, accounting,
+          tax compliance, and business support
+          for Philippine businesses.
+        </p>
+
+
+        <div class="contact-list">
+
+
+          <div class="contact-item">
+
+            <div class="icon">
+              ✉
+            </div>
+
+            <div>
+
+              <strong>
+                Email
+              </strong>
+
+              <span>
+                Replace with official MVC email
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="icon">
+              ☎
+            </div>
+
+            <div>
+
+              <strong>
+                Phone / Viber
+              </strong>
+
+              <span>
+                Replace with official contact number
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="icon">
+              ⌖
+            </div>
+
+            <div>
+
+              <strong>
+                Service Area
+              </strong>
+
+              <span>
+                Philippines
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- INQUIRY FORM -->
+
+      <form id="inquiryForm">
+
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-grid">
+
+
+          <div class="field">
+
+            <label for="name">
+              Name *
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              required
+              placeholder="Your name">
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="company">
+              Business / Company
+            </label>
+
+            <input
+              id="company"
+              name="company"
+              placeholder="Business name">
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Email *
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="you@example.com">
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="service">
+              Service needed *
+            </label>
+
+            <select
+              id="service"
+              name="service"
+              required>
+
+              <option value="">
+                Select a service
+              </option>
+
+              <option>
+                Bookkeeping &amp; Accounting
+              </option>
+
+              <option>
+                BIR Tax Compliance
+              </option>
+
+              <option>
+                Business Registration
+              </option>
+
+              <option>
+                SEC / eAFS Compliance
+              </option>
+
+              <option>
+                Payroll Support
+              </option>
+
+              <option>
+                Other Compliance Assistance
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="message">
+              How can we help? *
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Briefly describe your concern or requirement.">
+            </textarea>
+
+          </div>
+
+
+          <div class="field full">
+
+            <button
+              class="primary"
+              type="submit">
+
+              Send Inquiry
+
+            </button>
+
+            <p class="form-note">
+              Your inquiry will be sent directly
+              to our email.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+
+      ©
+      <span id="year"></span>
+      MVC Bookkeeping &amp; Accounting Services.
+      All rights reserved.
+
+    </div>
+
+    <div>
+      Bookkeeping • Accounting • Tax Compliance
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast">
+
+  Thank you! Your inquiry has been sent.
+  We will get back to you soon.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const navLinks =
+  document.getElementById("navLinks");
+
+
+menuBtn.addEventListener(
+  "click",
+  () => {
+    navLinks.classList.toggle("open");
+  }
+);
+
+
+document
+  .querySelectorAll("#navLinks a")
+  .forEach(link => {
+
+    link.addEventListener(
+      "click",
+      () => {
+        navLinks.classList.remove("open");
+      }
+    );
+
+  });
+
+
+document.getElementById("year")
+  .textContent =
+  new Date().getFullYear();
+
+
+const RECIPIENT = "Akiaeljon@gmail.com";
+
+document
+  .getElementById("inquiryForm")
+  .addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+      const form = this;
+      const btn = form.querySelector("button[type=submit]");
+      const toast = document.getElementById("toast");
+      const originalLabel = btn.textContent;
+
+      const data = new FormData(form);
+      const payload = {
+        name: data.get("name"),
+        company: data.get("company") || "-",
+        email: data.get("email"),
+        service: data.get("service"),
+        message: data.get("message").trim(),
+        _subject: "New website inquiry: " + data.get("service"),
+        _replyto: data.get("email"),
+        _template: "table",
+        _captcha: "false",
+        _honey: data.get("_honey")
+      };
+
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+
+      try {
+
+        const res = await fetch(
+          "https://formsubmit.co/ajax/" + RECIPIENT,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(payload)
+          }
+        );
+
+        const result = await res.json();
+
+        if (!res.ok || result.success === "false") {
+          throw new Error("Send failed");
+        }
+
+        toast.textContent =
+          "Thank you! Your inquiry has been sent. We will get back to you soon.";
+        form.reset();
+
+      } catch (err) {
+
+        // Fallback: open the visitor's email app with the message prefilled
+        const body =
+          "Name: " + payload.name + "\n" +
+          "Company: " + payload.company + "\n" +
+          "Email: " + payload.email + "\n" +
+          "Service: " + payload.service + "\n\n" +
+          payload.message;
+
+        window.location.href =
+          "mailto:" + RECIPIENT +
+          "?subject=" + encodeURIComponent(payload._subject) +
+          "&body=" + encodeURIComponent(body);
+
+        toast.textContent =
+          "Opening your email app to send the inquiry...";
+
+      } finally {
+
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+
+        toast.classList.add("show");
+        setTimeout(
+          () => { toast.classList.remove("show"); },
+          4500
+        );
+
+      }
+
+    }
+  );
+
+</script>
+
+</body>
+</html>
