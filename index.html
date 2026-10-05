@@ -1571,7 +1571,8 @@ document.getElementById("year")
   new Date().getFullYear();
 
 
-const RECIPIENT = "akiaeljon@gmail.com";
+// Paste your Zapier "Catch Hook" webhook URL here
+const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/27457834/4mqoyqt/";
 
 document
   .getElementById("inquiryForm")
@@ -1587,41 +1588,39 @@ document
       const originalLabel = btn.textContent;
 
       const data = new FormData(form);
-      const payload = {
+
+      // Spam bots fill the hidden field; humans never see it
+      if (data.get("_honey")) { return; }
+
+      const payload = new URLSearchParams({
         name: data.get("name"),
-        company: data.get("company") || "-",
+        company: data.get("company") || "",
         email: data.get("email"),
         service: data.get("service"),
         message: data.get("message").trim(),
-        _subject: "New website inquiry: " + data.get("service"),
-        _replyto: data.get("email"),
-        _template: "table",
-        _captcha: "false",
-        _honey: data.get("_honey")
-      };
+        submitted_at: new Date().toISOString(),
+        page: window.location.href
+      });
 
       btn.disabled = true;
       btn.textContent = "Sending...";
 
       try {
 
-        const res = await fetch(
-          "https://formsubmit.co/ajax/" + RECIPIENT,
+        if (ZAPIER_WEBHOOK_URL.indexOf("hooks.zapier.com") === -1) {
+          throw new Error("Zapier webhook URL not set");
+        }
+
+        // no-cors: Zapier webhooks don't send CORS headers, so the
+        // response is opaque, but the data is still delivered.
+        await fetch(
+          ZAPIER_WEBHOOK_URL,
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify(payload)
+            mode: "no-cors",
+            body: payload
           }
         );
-
-        const result = await res.json();
-
-        if (!res.ok || result.success === "false") {
-          throw new Error("Send failed");
-        }
 
         toast.textContent =
           "Thank you! Your inquiry has been sent. We will get back to you soon.";
@@ -1629,6 +1628,7 @@ document
 
       } catch (err) {
 
+        console.error(err);
         toast.textContent =
           "Sorry, your inquiry could not be sent. Please try again in a moment.";
 
