@@ -1629,8 +1629,21 @@ document
 
       } catch (err) {
 
+        // Fallback: open the visitor's email app with the message prefilled
+        const body =
+          "Name: " + payload.name + "\n" +
+          "Company: " + payload.company + "\n" +
+          "Email: " + payload.email + "\n" +
+          "Service: " + payload.service + "\n\n" +
+          payload.message;
+
+        window.location.href =
+          "mailto:" + RECIPIENT +
+          "?subject=" + encodeURIComponent(payload._subject) +
+          "&body=" + encodeURIComponent(body);
+
         toast.textContent =
-          "Sorry, your inquiry could not be sent. Please try again in a moment.";
+          "Opening your email app to send the inquiry...";
 
       } finally {
 
